@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
+
+@import "variables";
+@import "reset";
+@import "mixins";
+
+body {
+  background-color: $color-1;
+  color: $color-text-1;
+  font-size: $font-size;
+  font-family: $font-family;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-size: $font-size;
+  font-weight: bold;
+}
+
+a {
+  color: $color-text-1;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+blockquote {
+  @include stack(1.5rem);
+  margin-left: 0;
+  margin-right: 0;
+  padding: 1.5rem;
+  border-left: 0.5rem solid $color-3;
+  background-color: #00000022;
+}
+
+.skip-link {
+  @include box();
+  display: block;
+  padding: 0.5rem 1.5rem;
+  font-size: $font-size-sm;
+  text-align: right;
+}
+
+header {
+  h1 {
+    font-size: $font-size-title;
+    text-decoration: underline;
+  }
+
+  .container {
+    @include box();
+    @include stack(1.5rem);
+    padding-top: 0;
+  }
+
+  .link-github {
+    @include action();
+
+    svg {
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: 0.5rem;
+      fill: $color-text-2;
+    }
+  }
+}
+
+nav {
+  background-color: $color-2;
+
+  ul {
+    @include box();
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+  }
+
+  a {
+    @include action($color-1, white);
+  }
+}
+
+main {
+  @include diag($color-1, $color-2);
+
+  > .container {
+    @include box();
+    @include divide(1.5rem, 0.5rem solid $color-3);
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  article {
+    @include divide(1.5rem, 0.25rem dashed $color-3, 1.5rem);
+    background-color: $color-1;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    box-shadow: 0.25rem 0.25rem #00000055;
+  }
+
+  section {
+    @include stack(1.5rem);
+  }
+}
+
+#about {
+  ul {
+    list-style: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.5rem;
+    background-color: #00000022;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.25rem;
+  }
+}
+
+#files {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.25rem;
+  }
+
+  h3 {
+    grid-column: 1 / -1;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    @include action();
+  }
+}
+
+aside {
+  .container {
+    @include stack(1.5rem);
+
+    > a {
+      @include action();
+    }
+  }
+}
+
+.profile {
+  background-color: $color-2;
+
+  .container {
+    @include box();
+  }
+}
+
+@media (max-width: 1500px) {
+  #styles {
+    background-color: $color-2;
+
+    .container {
+      @include box();
+      padding-top: 0;
+    }
+  }
+}
+
+@media (min-width: 1500px) {
+  #styles {
+    position: fixed;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    width: 300px;
+    background-color: $color-1;
+    border: 0.25rem solid $color-3;
+    padding: 0.75rem;
+    box-shadow: 0.25rem 0.25rem #00000055;
+  }
+}
+
+.page-footer {
+  padding-bottom: 1.5rem;
+
+  .container {
+    @include box();
+    @include stack(1.5rem);
+  }
+
+  .link-github {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+      fill: white;
+    }
+  }
+}
+
+.link-codepen {
+  &:after {
+    content: "!";
+  }
+}

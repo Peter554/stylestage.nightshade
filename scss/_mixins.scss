@@ -1,0 +1,63 @@
+@mixin box($pad-x: 0.75rem, $pad-y: 1.5rem) {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: $pad-y $pad-x;
+}
+
+@mixin stack($size) {
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  > * + * {
+    margin-top: $size;
+  }
+}
+
+@mixin divide($size, $border-style, $end-size: 0) {
+  > * {
+    padding-top: $size;
+    padding-bottom: $size;
+    border-top: $border-style;
+  }
+
+  > :first-child {
+    padding-top: $end-size;
+    border-top: 0;
+  }
+
+  > :last-child {
+    padding-bottom: $end-size;
+  }
+}
+
+@mixin action($bgclr: $color-3, $clr: $color-text-2) {
+  display: inline-flex;
+  background-color: $bgclr;
+  padding: 0.5rem 0.75rem;
+  color: $clr;
+  box-shadow: 0.125rem 0.125rem #00000055;
+  transition: transform 0.1s;
+
+  &:hover,
+  &:focus {
+    transform: scale(0.95);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+@mixin diag($clr1, $clr2) {
+  background-color: $clr1;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 1.5rem,
+    $clr2 1.5rem,
+    $clr2 4rem
+  );
+}
